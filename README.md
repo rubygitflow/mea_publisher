@@ -20,6 +20,7 @@ rspec spec
 docker build . -t mea_publisher
 ```
 * Run docker container
+
 Fill environment variables into the .env file, then run:
 ```bash
 docker compose up
