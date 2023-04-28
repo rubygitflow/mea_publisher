@@ -7,8 +7,8 @@ Collection of opinions on technological experience
 * Install app
 ```bash
 bundle install 
-rake db:create
-rails db:migrate
+bundle exec rails db:create
+bundle exec rails db:migrate
 ```
 * Run tests
 ```bash
