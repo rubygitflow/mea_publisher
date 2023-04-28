@@ -1,9 +1,9 @@
 # Mea publisher
 Collection of opinions on technological experience
 
-* Ruby version
+* Ruby version:
 3.2.1
-* Ruby on Rails version
+* Ruby on Rails version:
 7.1.0.alpha
 * Install app
 ```bash
