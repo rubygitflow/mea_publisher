@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root 'people#show'
 
   resources :people, only: [:show]
+
+  get 'up' => 'rails/health#show'
 end
