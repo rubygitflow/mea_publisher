@@ -1,0 +1,86 @@
+version: '3.3'
+
+services:
+  web:
+    image: registry.gitlab.com/It.Architect/mea_publisher:production
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: ["CMD", "curl", "-i", "-f", "http://localhost:3000/up"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    env_file: .env
+
+  sidekiq:
+    image: registry.gitlab.com/It.Architect/mea_publisher:production
+    command: "bash -c './bin/rails db:prepare && bundle exec sidekiq'"
+    healthcheck:
+      test: "bundle exec sidekiqmon processes | grep $$(hostname)"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    env_file: .env
+
+  redis:
+    image: redis:6.2.12-alpine
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+    env_file: .env
+
+  postgres:
+    image: postgres:14.6-alpine
+    volumes:
+      - postgres_vol:/var/lib/postgresql/data:cached
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "mea_publisher_production"]
+      interval: 5s
+    env_file: .env
+
+  cron-echo:
+    image: registry.gitlab.com/It.Architect/mea_publisher:production
+    env_file: .env
+    command: ./bin/rails secret
+    deploy:
+      mode: replicated
+      replicas: 0
+      labels:
+        - "swarm.cronjob.enable=true"
+        - "swarm.cronjob.schedule=*/2 * * * *"
+        - "swarm.cronjob.skip-running=true"
+      restart_policy:
+        condition: none
+
+  swarm-cronjob:
+    image: crazymax/swarm-cronjob
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - "TZ=Europe/Moscow"
+      - "LOG_LEVEL=info"
+      - "LOG_JSON=false"
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+  cron-prune-nodes:
+    image: docker
+    command: ["docker", "system", "prune", "-f"]
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      mode: global
+      labels:
+        - "swarm.cronjob.enable=true"
+        - "swarm.cronjob.schedule=0 1 * * 6"
+        - "swarm.cronjob.skip-running=false"
+      restart_policy:
+        condition: none
+
+volumes:
+  postgres:
+  redis:
