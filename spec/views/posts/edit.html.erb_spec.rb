@@ -3,13 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe 'posts/edit', type: :view do
-  let(:person) { Person.create!(name: 'Kraft') }
+  let(:person) do
+    Person.create!(
+      name: 'Kraft',
+      email: Faker::Internet.email
+    )
+  end
   let(:post) do
-    Post.create!(
+    post = Post.new(
       title: 'MyString',
-      person:,
+      person: person,
       body: 'MyText'
     )
+    post.current_user = person
+    post.save
+    post
   end
 
   before do

@@ -5,14 +5,23 @@ require 'rails_helper'
 RSpec.describe '/people', type: :request do
   let(:valid_attributes) do
     {
-      name: 'Gecko'
+      name: 'Gecko',
+      email: Faker::Internet.email
     }
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
       person = Person.create! valid_attributes
-      get root_url(person)
+      get person_url(person)
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET /index' do
+    it 'renders a successful response' do
+      Person.create! valid_attributes
+      get people_url
       expect(response).to be_successful
     end
   end

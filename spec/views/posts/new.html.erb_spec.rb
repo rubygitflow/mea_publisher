@@ -3,7 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'posts/new', type: :view do
-  let(:person) { Person.create!(name: 'Kraft') }
+  let(:person) do
+    Person.create!(
+      name: 'Kraft',
+      email: Faker::Internet.email
+    )
+  end
 
   before do
     assign(:post, Post.new(
