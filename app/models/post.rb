@@ -7,17 +7,21 @@ class Post < ApplicationRecord
   after_update :hystory_updated
   after_destroy :hystory_destroyed
 
+  attr_accessor :current_user
+
+  delegate :name, to: :person, prefix: :author
+
   private
 
   def hystory_created
-    HystoryLogger.new('created', person_id).call
+    HystoryLogger.new('created', current_user.id).call
   end
 
   def hystory_updated
-    HystoryLogger.new('updated', person_id).call
+    HystoryLogger.new('updated', current_user.id).call
   end
 
   def hystory_destroyed
-    HystoryLogger.new('deleted', person_id).call
+    HystoryLogger.new('deleted', current_user.id).call
   end
 end

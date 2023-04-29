@@ -12,6 +12,16 @@ services:
       retries: 3
     env_file: .env
 
+  sidekiq:
+    image: mea_publisher:latest
+    command: "bash -c './bin/rails db:prepare && bundle exec sidekiq'"
+    healthcheck:
+      test: "bundle exec sidekiqmon processes | grep $$(hostname)"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    env_file: .env
+
   postgres42:
     image: postgres:14.6-alpine
     volumes:
@@ -22,5 +32,15 @@ services:
       interval: 5s
     env_file: .env
 
+  redis:
+    image: redis:6.2.12-alpine
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+    env_file: .env
+
 volumes:
   postgres_vol:
+  redis:

@@ -1,0 +1,13 @@
+development:
+  :concurrency: 5
+production:
+  :concurrency: 15
+:max_retries: 3
+:queues:
+  - default
+  - low
+  - send_email
+:limits:
+  default: 1
+  low: 1
+  send_email: 3
