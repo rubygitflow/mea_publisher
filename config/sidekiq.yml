@@ -7,7 +7,9 @@ production:
   - default
   - low
   - send_email
+  - mailer
 :limits:
   default: 1
   low: 1
   send_email: 3
+  mailer: 1
