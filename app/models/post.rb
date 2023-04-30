@@ -15,6 +15,7 @@ class Post < ApplicationRecord
 
   def hystory_created
     HystoryLogger.new('created', current_user.id).call
+    PostNotificationJob.perform_later(self)
   end
 
   def hystory_updated

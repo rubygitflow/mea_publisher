@@ -28,6 +28,9 @@ RSpec/NamedSubject:
 RSpec/InstanceVariable:
   Enabled: false
 
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
 Style/HashSyntax:
   Exclude:
     - spec/views/**/*
