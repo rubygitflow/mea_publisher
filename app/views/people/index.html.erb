@@ -1,19 +1,31 @@
-<div class="container">
-  <p class="mb-sm gr"><%= notice %></p>
+<% if notice.present? %>
+  <p class="mb mt message message-notice text-green"><%= notice %></p>
+<% end %>
 
-  Hi, <%= @person.name %>!
-  <div class="mb-lg">
-    <%= link_to "You can go to the posts", posts_path %>
+<div class="container mb-sm">
+  <div class="text-title mb title-lg">
+    <div>
+      Hi, <%= @person.name %>!
+    </div>
+
+    <div>
+      <%= link_to fa_icon('address-card'), @person,
+        title: "Show information about this person" %>
+    </div>
   </div>
 
+  <div>
+    <%= link_to "Go to posts", posts_path %>
+  </div>
+</div>
+
+<div class="container">
   <h2 class="title-lg mb">People</h2>
 
   <div id="people">
+    <!-- <%= render @people %> -->
     <% @people.each do |person| %>
       <%= render person %>
-      <p>
-        <%= link_to fa_icon('address-card'), person_path(person), title: "Show this person" %>
-      </p>
     <% end %>
   </div>
 </div>

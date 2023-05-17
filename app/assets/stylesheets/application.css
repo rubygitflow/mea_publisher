@@ -17,4 +17,6 @@
  *= require layout
  *= require button
  *= require form
+ *= require post
+ *= require message
  */

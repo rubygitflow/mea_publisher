@@ -23,10 +23,20 @@ a, button {
   font-size: 80%;
 }
 
-.gr {
-  color: green
+.text-grey {
+  color: #a0a0a0;
 }
 
-.red {
-  color: red
+.text-green {
+  color: green;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-title {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
 }

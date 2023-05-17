@@ -1,11 +1,25 @@
+<% if @post.errors.any? %>
+  <div class="mb mt message message-notice text-red">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+      <% @post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="container">
-  <h2 class="title-lg mb">New post</h2>
+  <div class="text-title mb title-lg">
+    <div>
+      New post
+    </div>
+
+    <div>
+      <%= link_to fa_icon('bars'), posts_path, title: "Back to posts" %>
+    </div>
+  </div>
 
   <%= render "form", post: @post %>
-
-  <br>
-
-  <div>
-    <%= link_to fa_icon('bars'), posts_path, title: "Back to posts" %>
-  </div>
 </div>

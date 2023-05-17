@@ -1,13 +1,18 @@
-<div class="container">
-  <p class="mb-sm gr"><%= notice %></p>
+<% if notice.present? %>
+  <p class="mb mt message message-notice text-green"><%= notice %></p>
+<% end %>
 
-  <h2 class="title-lg mb">Post</h2>
+<div class="container">
+  <div class="text-title mb title-lg">
+    <div>
+      Post
+    </div>
+
+    <div>
+      <%= link_to fa_icon('bars'), posts_path, title: "Back to posts" %>
+    </div>
+  </div>
 
   <%= render @post %>
 
-  <div class="mt-sm">
-    <%= link_to fa_icon('pencil'), edit_post_path(@post), title: "Edit this post" %> |
-    <%= link_to fa_icon('bars'), posts_path, title: "Back to posts" %> |
-    <%= button_to fa_icon('trash-o'), @post, method: :delete, title: "Destroy this post" %>
-  </div>
 </div>

@@ -1,16 +1,24 @@
-<div class="container">
-  <p class="mb-sm gr"><%= notice %></p>
+<% if notice.present? %>
+  <p class="mb mt message message-notice text-green"><%= notice %></p>
+<% end %>
 
-  <h2 class="title-lg mb">Posts</h2>
+<div class="container mb-sm">
+  <div class="text-title title-lg">
+    <div>
+      Posts
+    </div>
 
-  <div id="posts">
-    <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to fa_icon('address-card'), post_path(post), title: "Show this post" %>
-      </p>
-    <% end %>
+    <div>
+      <%= link_to "Add new post", new_post_path, class: "button button-main" %>
+    </div>
   </div>
+</div>
 
-  <p class="mt"><%= link_to "Add new post", new_post_path, class: "button button-main" %></p>
+<div id="posts">
+  <!-- <%= render @posts %> -->
+  <% @posts.each do |post| %>
+    <div class="mt-sm container">
+      <%= render post %>
+    </div>
+  <% end %>
 </div>

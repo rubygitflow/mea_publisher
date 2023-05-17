@@ -1,11 +1,17 @@
-<div class="container">
-  <p class="mb-sm gr"><%= notice %></p>
+<% if notice.present? %>
+  <p class="mb mt message message-notice text-green"><%= notice %></p>
+<% end %>
 
-  <h2 class="title-lg mb">Person</h2>
+<div class="container">
+  <div class="text-title mb title-lg">
+    <div>
+      Person
+    </div>
+
+    <div>
+      <%= link_to fa_icon('bars'), people_path, title: "Back to people" %>
+    </div>
+  </div>
 
   <%= render @person %>
-
-  <div class="mt-sm">
-    <%= link_to fa_icon('bars'), people_path, title: "Go to the list of people" %>
-  </div>
 </div>
