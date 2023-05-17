@@ -23,9 +23,9 @@ services:
     env_file: .env
 
   postgres42:
-    image: postgres:14.6-alpine
+    image: postgres:15.2-alpine
     volumes:
-      - postgres_vol:/var/lib/postgresql/data:cached
+      - postgres_vol_15:/var/lib/postgresql/data:cached
       - ./dumps/:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres", "-d", "mea_publisher_production"]
@@ -42,5 +42,5 @@ services:
     env_file: .env
 
 volumes:
-  postgres_vol:
+  postgres_vol_15:
   redis:
