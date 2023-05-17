@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p class="mb-sm gr"><%= notice %></p>
 
-<h1>Posts</h1>
+  <h2 class="title-lg mb">Posts</h2>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <%= render post %>
+      <p>
+        <%= link_to fa_icon('address-card'), post_path(post), title: "Show this post" %>
+      </p>
+    <% end %>
+  </div>
+
+  <p class="mt"><%= link_to "Add new post", new_post_path, class: "button button-main" %></p>
 </div>
-
-<%= link_to "New post", new_post_path %>

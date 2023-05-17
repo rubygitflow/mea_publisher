@@ -1,10 +1,12 @@
-<h1>Editing post</h1>
+<div class="container">
+  <h2 class="title-lg mb">Editing post</h2>
 
-<%= render "form", post: @post %>
+  <%= render "form", post: @post %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this post", @post %> |
-  <%= link_to "Back to posts", posts_path %>
+  <div>
+    <%= link_to fa_icon('address-card'), post_path(@post), title: "Show this post" %> |
+    <%= link_to fa_icon('bars'), posts_path, title: "Back to posts" %>
+  </div>
 </div>
