@@ -1,17 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p class="mb-sm gr"><%= notice %></p>
 
-Hi, <%= @person.name %>!
-<div>
-  <%= link_to "Go to posts", posts_path %>
-</div>
+  Hi, <%= @person.name %>!
+  <div class="mb-lg">
+    <%= link_to "You can go to the posts", posts_path %>
+  </div>
 
-<h1>People</h1>
+  <h2 class="title-lg mb">People</h2>
 
-<div id="people">
-  <% @people.each do |person| %>
-    <%= render person %>
-    <p>
-      <%= link_to "Show this person", person %>
-    </p>
-  <% end %>
+  <div id="people">
+    <% @people.each do |person| %>
+      <%= render person %>
+      <p>
+        <%= link_to fa_icon('address-card'), person_path(person), title: "Show this person" %>
+      </p>
+    <% end %>
+  </div>
 </div>

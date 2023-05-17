@@ -1,7 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p class="mb-sm gr"><%= notice %></p>
 
-<%= render @person %>
+  <h2 class="title-lg mb">Person</h2>
 
-<div>
-  <%= link_to "Go to people", people_path %>
+  <%= render @person %>
+
+  <div class="mt-sm">
+    <%= link_to fa_icon('bars'), people_path, title: "Go to the list of people" %>
+  </div>
 </div>
