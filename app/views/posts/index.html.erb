@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+  <p class="mb mt message message-notice text-green"><%= notice %></p>
+<% end %>
 
-<h1>Posts</h1>
+<div class="container mb-sm">
+  <div class="text-title title-lg">
+    <div>
+      Posts
+    </div>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+    <div>
+      <%= link_to "Add new post", new_post_path, class: "button button-main" %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<div id="posts">
+  <!-- <%= render @posts %> -->
+  <% @posts.each do |post| %>
+    <div class="mt-sm container">
+      <%= render post %>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,33 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_230_429_082_941) do
+ActiveRecord::Schema[7.1].define(version: 2023_04_29_082941) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'hystories', force: :cascade do |t|
-    t.string 'operation_type'
-    t.bigint 'person_id', null: false
-    t.datetime 'created_at', null: false
-    t.index ['person_id'], name: 'index_hystories_on_person_id'
+  create_table "hystories", force: :cascade do |t|
+    t.string "operation_type"
+    t.bigint "person_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["person_id"], name: "index_hystories_on_person_id"
   end
 
-  create_table 'people', force: :cascade do |t|
-    t.string 'name', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'email', default: 'vito@wisoky.example', null: false
+  create_table "people", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", default: "vito@wisoky.example", null: false
   end
 
-  create_table 'posts', force: :cascade do |t|
-    t.string 'title'
-    t.bigint 'person_id', null: false
-    t.text 'body'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['person_id'], name: 'index_posts_on_person_id'
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.bigint "person_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_posts_on_person_id"
   end
 
-  add_foreign_key 'hystories', 'people'
-  add_foreign_key 'posts', 'people'
+  add_foreign_key "hystories", "people"
+  add_foreign_key "posts", "people"
 end

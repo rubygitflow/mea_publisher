@@ -39,6 +39,18 @@ Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
   Enabled: false
 
+Style/NumericLiterals:
+  Exclude:
+    - db/**/*
+
+Style/StringLiterals:
+  Exclude:
+    - db/**/*
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - db/**/*
+
 Metrics/CyclomaticComplexity:
   Enabled: false
 
@@ -56,3 +68,5 @@ Lint/UselessAssignment:
   Exclude:
     - db/seeds.rb
 
+Metrics/AbcSize:
+  Enabled: false
