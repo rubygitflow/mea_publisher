@@ -6,6 +6,7 @@ RSpec.describe PostNotificationJob, type: :job do
   let(:person) do
     Person.create!(
       name: 'Kraft',
+      nickname: Faker::Internet.unique.username(specifier: 8),
       email: Faker::Internet.email
     )
   end

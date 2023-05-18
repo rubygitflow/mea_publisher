@@ -4,10 +4,12 @@ require 'rails_helper'
 
 RSpec.describe 'people/show', type: :view do
   let(:email) { Faker::Internet.email }
+  let(:nickname) { Faker::Internet.unique.username(specifier: 8) }
 
   before do
     assign(:person, Person.create!(
                       name: 'Kraft',
+                      nickname: nickname,
                       email: email
                     ))
   end

@@ -6,6 +6,7 @@ RSpec.describe '/people', type: :request do
   let(:valid_attributes) do
     {
       name: 'Gecko',
+      nickname: Faker::Internet.unique.username(specifier: 8),
       email: Faker::Internet.email
     }
   end

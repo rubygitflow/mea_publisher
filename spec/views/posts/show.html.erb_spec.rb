@@ -6,6 +6,7 @@ RSpec.describe 'posts/show', type: :view do
   let(:person) do
     Person.create!(
       name: 'Kraft',
+      nickname: Faker::Internet.unique.username(specifier: 8),
       email: Faker::Internet.email
     )
   end
@@ -24,7 +25,7 @@ RSpec.describe 'posts/show', type: :view do
   it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Title/)
-    expect(rendered).to match(person.name.to_s)
+    expect(rendered).to match(person.nickname.to_s)
     expect(rendered).to match(/MyText/)
   end
 end

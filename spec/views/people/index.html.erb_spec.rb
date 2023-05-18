@@ -5,16 +5,20 @@ require 'rails_helper'
 RSpec.describe 'people/index', type: :view do
   let(:email1) { Faker::Internet.email }
   let(:email2) { Faker::Internet.email }
+  let(:nickname1) { Faker::Internet.unique.username(specifier: 8) }
+  let(:nickname2) { Faker::Internet.unique.username(specifier: 8) }
   let(:person) { Person.create!(name: 'Porter') }
 
   before do
     assign(:people, [
              Person.create!(
                name: 'Kraft',
+               nickname: nickname1,
                email: email1
              ),
              Person.create!(
                name: 'Kraft',
+               nickname: nickname2,
                email: email2
              )
            ])

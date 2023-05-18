@@ -1,17 +1,18 @@
 <%= form_with(model: post) do |form| %>
   <div>
+    <div><%= form.label :person_id %></div>
+    <div><%= form.text_field :person_id, class: "form-text-field", type: "hidden" %></div>
+    <div class="form-text-field"><%= post.author_nickname %></div>
+  </div>
+
+  <div>
     <p><%= form.label :title %></p>
     <p><%= form.text_field :title, class: "form-text-field" %></p>
   </div>
 
   <div>
-    <p><%= form.label :person_id %></p>
-    <p><%= form.text_field :person_id, class: "form-text-field" %></p>
-  </div>
-
-  <div>
     <p><%= form.label :body %></p>
-    <p><%= form.text_area :body, rows: 7, class: "form-text-area" %></p>
+    <p><%= form.text_area :body, rows: 7, required: true, minlength: 1, class: "form-text-area" %></p>
   </div>
 
   <div class="mt">

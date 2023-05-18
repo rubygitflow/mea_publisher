@@ -15,8 +15,8 @@ class PeopleController < ApplicationController
   private
 
   def take_current_user
-    c = Person.ids
-    @person = Person.find(c.sample)
+    user_ids = Person.ids
+    @person = Person.find(user_ids.sample)
     session[:user_id] = @person.id
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_04_29_082941) do
+ActiveRecord::Schema[7.1].define(version: 2023_05_18_135052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,13 +25,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_04_29_082941) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email", default: "vito@wisoky.example", null: false
+    t.string "email", default: "kent@herzog.example", null: false
+    t.string "nickname", default: "jone_kerluke", null: false
+    t.index ["nickname"], name: "index_people_on_nickname", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.bigint "person_id", null: false
-    t.text "body"
+    t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_posts_on_person_id"

@@ -3,6 +3,10 @@
 class Post < ApplicationRecord
   belongs_to :person
 
+  validates :body, presence: true,
+                   length: { minimum: 1, maximum: 100.kilobytes },
+                   allow_blank: false
+
   after_create :hystory_created
   after_update :hystory_updated
   after_destroy :hystory_destroyed
@@ -10,6 +14,7 @@ class Post < ApplicationRecord
   attr_accessor :current_user
 
   delegate :name, to: :person, prefix: :author
+  delegate :nickname, to: :person, prefix: :author
 
   private
 

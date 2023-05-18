@@ -18,6 +18,7 @@ RSpec.describe '/posts', type: :request do
   let(:person) do
     Person.create!(
       name: 'Kraft',
+      nickname: Faker::Internet.unique.username(specifier: 8),
       email: Faker::Internet.email
     )
   end
@@ -35,8 +36,8 @@ RSpec.describe '/posts', type: :request do
   let(:invalid_attributes) do
     {
       title: 'issue',
-      person_id: nil,
-      body: 'qwerty'
+      person_id: person.id,
+      body: ''
     }
   end
 

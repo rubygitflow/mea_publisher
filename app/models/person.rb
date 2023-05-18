@@ -2,5 +2,8 @@
 
 class Person < ApplicationRecord
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+  validates :nickname, presence: true, uniqueness: true
 end
