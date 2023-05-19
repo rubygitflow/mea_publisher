@@ -5,17 +5,17 @@
     <div class="form-text-field"><%= post.author_nickname %></div>
   </div>
 
-  <div>
+  <div class="mt">
     <p><%= form.label :title %></p>
     <p><%= form.text_field :title, class: "form-text-field" %></p>
   </div>
 
-  <div>
+  <div class="mt">
     <p><%= form.label :body %></p>
     <p><%= form.text_area :body, rows: 7, required: true, minlength: 1, class: "form-text-area" %></p>
   </div>
 
-  <div class="mt">
+  <div class="mt-lg">
     <%= form.submit 'Save', class: "button button-main" %>
   </div>
 <% end %>

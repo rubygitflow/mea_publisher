@@ -167,7 +167,6 @@ RSpec.describe '/posts', type: :request do
         post.save
 
         patch post_url(post), params: { post: invalid_attributes }
-        pp response.status
         expect(response).to have_http_status(:unprocessable_entity)
       end
 

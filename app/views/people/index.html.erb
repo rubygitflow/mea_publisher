@@ -19,13 +19,21 @@
   </div>
 </div>
 
-<div class="container">
-  <h2 class="title-lg mb">People</h2>
+<div class="container mb-sm">
+  <div class="text-title mb title-lg">
+    <h2>People</h2>
 
-  <div id="people">
-    <!-- <%= render @people %> -->
-    <% @people.each do |person| %>
-      <%= render person %>
-    <% end %>
+    <div>
+      <%= link_to "Add new person", new_person_path, class: "button button-main" %>
+    </div>
   </div>
+</div>
+
+<div id="people">
+  <!-- <%= render @people %> -->
+  <% @people.each do |person| %>
+    <div class="mt-sm container">
+      <%= render person %>
+    </div>
+  <% end %>
 </div>

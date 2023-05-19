@@ -1,0 +1,24 @@
+<%= form_with(model: person) do |form| %>
+  <div>
+    <div><%= form.label :name, '* Your name' %></div>
+    <div><%= form.text_field :name, required: true, minlength: 2, class: "form-text-field" %></div>
+  </div>
+
+  <div class="mt">
+    <p><%= form.label :nickname, '* Your unique nickname' %></p>
+    <p><%= form.text_field :nickname, required: true, minlength: 8, class: "form-text-field" %></p>
+  </div>
+
+  <div class="mt">
+    <p><%= form.label :email, '* Your E-mail' %></p>
+    <p><%= form.text_field :email, required: true, minlength: 6, class: "form-text-field" %></p>
+  </div>
+
+  <div class="mt">
+    <p class="text-sm">* Required fields</p>
+  </div>
+
+  <div class="mt-lg">
+    <%= form.submit @accept, class: "button button-main" %>
+  </div>
+<% end %>

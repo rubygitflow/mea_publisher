@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="text-title mb title-lg">
+    <div>
+      Editing person details
+    </div>
+
+    <div>
+      <%= link_to fa_icon('address-card'), person_path(@person),
+        title: "Show this post" %> |
+      <%= link_to fa_icon('bars'), people_path,
+        title: "Back to the list of people" %>
+    </div>
+  </div>
+
+  <% @accept = 'Update details' %>
+  <%= render "form", person: @person %>
+</div>
