@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :people, only: %i[show index new create edit update]
 
   get 'up' => 'rails/health#show'
+
+  resource :session, only: %i[new create destroy]
 end

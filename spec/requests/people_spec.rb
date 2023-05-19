@@ -21,6 +21,13 @@ RSpec.describe '/people', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
+      params = {
+        session: {
+          email: valid_attributes[:email]
+        }
+      }
+      do_request(:post, session_path, params)
+
       person = Person.create! valid_attributes
       get person_url(person)
       expect(response).to be_successful
@@ -30,6 +37,13 @@ RSpec.describe '/people', type: :request do
   describe 'GET /index' do
     it 'renders a successful response' do
       Person.create! valid_attributes
+      params = {
+        session: {
+          email: valid_attributes[:email]
+        }
+      }
+      do_request(:post, session_path, params)
+
       get people_url
       expect(response).to be_successful
     end

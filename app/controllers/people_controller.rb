@@ -9,6 +9,7 @@ class PeopleController < ApplicationController
 
   # GET /people
   def index
+    redirect_to new_session_path if @person.blank?
     @people = Person.all
   end
 
@@ -56,9 +57,7 @@ class PeopleController < ApplicationController
   end
 
   def take_current_user
-    user_ids = Person.ids
-    @person = Person.find(user_ids.sample)
-    session[:user_id] = @person.id
+    @person = current_user
   end
 
   def find_person

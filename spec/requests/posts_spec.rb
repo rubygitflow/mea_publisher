@@ -42,7 +42,12 @@ RSpec.describe '/posts', type: :request do
   end
 
   before do
-    init_current_user
+    params = {
+      session: {
+        email: person[:email]
+      }
+    }
+    do_request(:post, session_path, params)
   end
 
   describe 'GET /index' do
