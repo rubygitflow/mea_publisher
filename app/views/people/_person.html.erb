@@ -21,9 +21,11 @@
       <%= l(person.created_at, format: :short) %>
     </div>
 
-    <div>
-      <%= link_to fa_icon('pencil'), edit_person_path(person),
-        title: "Edit this post" %>
-    </div>
+    <% if !Rails.env.test? && current_user.present? %>
+      <div>
+        <%= link_to fa_icon('pencil'), edit_person_path(person),
+          title: "Edit this post" %>
+      </div>
+    <% end %>
   </div>
 </div>

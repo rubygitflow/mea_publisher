@@ -15,7 +15,9 @@
     <p><%= form.text_area :body, rows: 7, required: true, minlength: 1, class: "form-text-area" %></p>
   </div>
 
-  <div class="mt-lg">
-    <%= form.submit 'Save', class: "button button-main" %>
-  </div>
+  <% if !Rails.env.test? &&  current_user.present? %>
+    <div class="mt-lg">
+      <%= form.submit 'Save', class: "button button-main" %>
+    </div>
+  <% end %>
 <% end %>

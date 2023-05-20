@@ -7,7 +7,8 @@ RSpec.describe 'people/new', type: :view do
     assign(:person, Person.new(
                       name: 'Nick',
                       nickname: 'Nick_1234',
-                      email: 'sa@post.com'
+                      email: 'sa@post.com',
+                      password: '12345678'
                     ))
   end
 

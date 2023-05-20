@@ -7,7 +7,8 @@ RSpec.describe '/people', type: :request do
     {
       name: 'Gecko',
       nickname: Faker::Internet.unique.username(specifier: 8),
-      email: Faker::Internet.email
+      email: Faker::Internet.email,
+      password: '12345678'
     }
   end
 
@@ -15,7 +16,8 @@ RSpec.describe '/people', type: :request do
     {
       title: 'Gecko',
       nickname: '',
-      email: ''
+      email: '',
+      password: '12345678'
     }
   end
 
@@ -23,7 +25,8 @@ RSpec.describe '/people', type: :request do
     it 'renders a successful response' do
       params = {
         session: {
-          email: valid_attributes[:email]
+          email: valid_attributes[:email],
+          password: '12345678'
         }
       }
       do_request(:post, session_path, params)
@@ -39,7 +42,8 @@ RSpec.describe '/people', type: :request do
       Person.create! valid_attributes
       params = {
         session: {
-          email: valid_attributes[:email]
+          email: valid_attributes[:email],
+          password: '12345678'
         }
       }
       do_request(:post, session_path, params)
@@ -99,7 +103,8 @@ RSpec.describe '/people', type: :request do
         {
           name: 'Gecko',
           nickname: Faker::Internet.unique.username(specifier: 8),
-          email: Faker::Internet.email
+          email: Faker::Internet.email,
+          password: '12345678'
         }
       end
 

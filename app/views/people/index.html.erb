@@ -2,30 +2,34 @@
   <p class="mb mt message message-notice text-green"><%= notice %></p>
 <% end %>
 
-<div class="container mb-sm">
-  <div class="text-title mb title-lg">
-    <div>
-      Hi, <%= @person.name %>!
+<% if !Rails.env.test? && current_user.present? %>
+  <div class="container mb-sm">
+    <div class="text-title mb title-lg">
+      <div>
+        Hi, <%= current_user.name %>!
+      </div>
+
+      <div>
+        <%= link_to fa_icon('address-card'), current_user,
+          title: "Show my personal information" %>
+      </div>
     </div>
 
     <div>
-      <%= link_to fa_icon('address-card'), @person,
-        title: "Show information about this person" %>
+      <%= link_to "Go to posts", posts_path %>
     </div>
   </div>
-
-  <div>
-    <%= link_to "Go to posts", posts_path %>
-  </div>
-</div>
+<% end %>
 
 <div class="container mb-sm">
   <div class="text-title mb title-lg">
     <h2>People</h2>
 
-    <div>
-      <%= link_to "Add new person", new_person_path, class: "button button-main" %>
-    </div>
+    <% if !Rails.env.test? && current_user.present? %>
+      <div>
+        <%= link_to "Add new person", new_person_path, class: "button button-main" %>
+      </div>
+    <% end %>
   </div>
 </div>
 

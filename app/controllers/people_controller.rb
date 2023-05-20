@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PeopleController < ApplicationController
-  before_action :take_current_user, only: %i[index]
   before_action :find_person, only: %i[show edit update]
 
   # GET /people/1
@@ -9,7 +8,6 @@ class PeopleController < ApplicationController
 
   # GET /people
   def index
-    redirect_to new_session_path if @person.blank?
     @people = Person.all
   end
 
@@ -25,7 +23,7 @@ class PeopleController < ApplicationController
     respond_to do |format|
       if @person.save
         format.html { redirect_to root_path, notice: 'You have successfully registered!' }
-        format.json { render :show, status: :created, location: @post }
+        format.json { render :show, status: :created, location: @person }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @person.errors, status: :unprocessable_entity }
@@ -53,11 +51,7 @@ class PeopleController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def person_params
-    params.require(:person).permit(:name, :nickname, :email)
-  end
-
-  def take_current_user
-    @person = current_user
+    params.require(:person).permit(:name, :nickname, :email, :password)
   end
 
   def find_person

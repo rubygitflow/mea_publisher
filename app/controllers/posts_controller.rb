@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :inspect_current_user
   before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts or /posts.json
@@ -71,9 +70,5 @@ class PostsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:title, :person_id, :body)
-  end
-
-  def inspect_current_user
-    redirect_to controller: 'people', action: 'index' if current_user.nil?
   end
 end

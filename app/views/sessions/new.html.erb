@@ -10,14 +10,13 @@
   <div class="mt">
     <%= form_with scope: :session, url: session_path, data: {turbo: false} do |form| %>
       <div>
-        <p><%= form.label :email %></p>
+        <p><%= form.label :email, 'Email or nickname' %></p>
         <p><%= form.text_field :email, required: true, minlength: 6, class: "form-text-field" %></p>
       </div>
 
       <div class="mt">
         <p><%= form.label :password %></p>
-        <p><%= form.password_field :password, class: "form-text-field" %></p>
-        <!-- <p><%= form.password_field :password, required: true, minlength: 8, class: "form-text-field" %></p> -->
+        <p><%= form.password_field :password, required: true, minlength: 8, class: "form-text-field" %></p>
       </div>
 
       <div class="mt-lg">

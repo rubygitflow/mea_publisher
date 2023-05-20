@@ -15,6 +15,11 @@
   </div>
 
   <div class="mt">
+    <p><%= form.label :password, '* Your password (minimum of 8 characters)' %></p>
+    <p><%= form.password_field :password, required: true, minlength: 8, class: "form-text-field" %></p>
+  </div>
+
+  <div class="mt">
     <p class="text-sm">* Required fields</p>
   </div>
 

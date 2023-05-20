@@ -19,7 +19,8 @@ RSpec.describe '/posts', type: :request do
     Person.create!(
       name: 'Kraft',
       nickname: Faker::Internet.unique.username(specifier: 8),
-      email: Faker::Internet.email
+      email: Faker::Internet.email,
+      password: '12345678'
     )
   end
   # This should return the minimal set of attributes required to create a valid
@@ -44,7 +45,8 @@ RSpec.describe '/posts', type: :request do
   before do
     params = {
       session: {
-        email: person[:email]
+        email: person[:email],
+        password: '12345678'
       }
     }
     do_request(:post, session_path, params)

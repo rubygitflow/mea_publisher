@@ -7,7 +7,8 @@ RSpec.describe 'posts/show', type: :view do
     Person.create!(
       name: 'Kraft',
       nickname: Faker::Internet.unique.username(specifier: 8),
-      email: Faker::Internet.email
+      email: Faker::Internet.email,
+      password: '12345678'
     )
   end
 
@@ -22,7 +23,7 @@ RSpec.describe 'posts/show', type: :view do
     assign(:post, post)
   end
 
-  it 'renders attributes in <p>' do
+  it 'renders attributes for person' do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(person.nickname.to_s)

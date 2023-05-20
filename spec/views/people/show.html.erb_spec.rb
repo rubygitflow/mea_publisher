@@ -10,7 +10,8 @@ RSpec.describe 'people/show', type: :view do
     assign(:person, Person.create!(
                       name: 'Kraft',
                       nickname: nickname,
-                      email: email
+                      email: email,
+                      password: '12345678'
                     ))
   end
 
@@ -18,5 +19,6 @@ RSpec.describe 'people/show', type: :view do
     render
     expect(rendered).to match(/Kraft/)
     expect(rendered).to match(/#{email}/)
+    expect(rendered).to match(/#{nickname}/)
   end
 end

@@ -8,9 +8,11 @@
       Posts
     </div>
 
-    <div>
-      <%= link_to "Add new post", new_post_path, class: "button button-main" %>
-    </div>
+    <% if !Rails.env.test? && current_user.present? %>
+      <div>
+        <%= link_to "Add new post", new_post_path, class: "button button-main" %>
+      </div>
+    <% end %>
   </div>
 </div>
 

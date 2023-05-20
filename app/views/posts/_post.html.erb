@@ -21,11 +21,13 @@
       <%= l(post.created_at, format: :short) %>
     </div>
 
-    <div>
-      <%= link_to fa_icon('pencil'), edit_post_path(post),
-        title: "Edit this post" %> |
-      <%= button_to fa_icon('trash-o'), post_path(post), method: :delete,
-        title: "Destroy this post" %>
-    </div>
+    <% if !Rails.env.test? && current_user.present? %>
+      <div>
+        <%= link_to fa_icon('pencil'), edit_post_path(post),
+          title: "Edit this post" %> |
+        <%= button_to fa_icon('trash-o'), post_path(post), method: :delete,
+          title: "Destroy this post" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -7,7 +7,8 @@ RSpec.describe 'posts/index', type: :view do
     Person.create!(
       name: 'Kraft',
       nickname: Faker::Internet.unique.username(specifier: 8),
-      email: Faker::Internet.email
+      email: Faker::Internet.email,
+      password: '12345678'
     )
   end
 

@@ -14,12 +14,14 @@ RSpec.describe 'people/index', type: :view do
              Person.create!(
                name: 'Kraft',
                nickname: nickname1,
-               email: email1
+               email: email1,
+               password: '12345678'
              ),
              Person.create!(
                name: 'Kraft',
                nickname: nickname2,
-               email: email2
+               email: email2,
+               password: '12345678'
              )
            ])
   end
@@ -31,5 +33,7 @@ RSpec.describe 'people/index', type: :view do
     assert_select cell_selector, text: Regexp.new('Kraft'.to_s), count: 2
     assert_select cell_selector, text: Regexp.new(email1), count: 1
     assert_select cell_selector, text: Regexp.new(email2), count: 1
+    assert_select cell_selector, text: Regexp.new(nickname1), count: 1
+    assert_select cell_selector, text: Regexp.new(nickname2), count: 1
   end
 end

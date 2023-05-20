@@ -7,13 +7,15 @@ class SessionsController < ApplicationController
   # POST /session or /session.json
   def create
     user = Person.find_by(email: user_params[:email])
+    user = Person.find_by(nickname: user_params[:email]) unless user.present?
+    user = user&.authenticate(user_params[:password])
 
     if user.present?
       session[:user_id] = user.id
 
       redirect_to root_path, notice: 'You are logged in to the account.'
     else
-      flash.now[:alert] = 'Incorrect password or email'
+      flash.now[:alert] = 'Incorrect password or nickname or email'
 
       render :new
     end
