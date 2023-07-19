@@ -17,8 +17,8 @@ require 'rails_helper'
 RSpec.describe '/posts', type: :request do
   let(:person) do
     Person.create!(
-      name: 'Kraft',
-      nickname: Faker::Internet.unique.username(specifier: 8),
+      name: Faker::Internet.unique.username(specifier: 12),
+      nickname: Faker::Internet.unique.username(specifier: 15),
       email: Faker::Internet.email,
       password: '12345678'
     )

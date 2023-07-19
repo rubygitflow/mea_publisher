@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe '/people', type: :request do
   let(:valid_attributes) do
     {
-      name: 'Gecko',
-      nickname: Faker::Internet.unique.username(specifier: 8),
+      name: Faker::Internet.unique.username(specifier: 12),
+      nickname: Faker::Internet.unique.username(specifier: 15),
       email: Faker::Internet.email,
       password: '12345678'
     }
@@ -101,8 +101,8 @@ RSpec.describe '/people', type: :request do
     context 'with valid parameters' do
       let(:new_attributes) do
         {
-          name: 'Gecko',
-          nickname: Faker::Internet.unique.username(specifier: 8),
+          name: Faker::Internet.unique.username(specifier: 12),
+          nickname: Faker::Internet.unique.username(specifier: 15),
           email: Faker::Internet.email,
           password: '12345678'
         }
