@@ -1,0 +1,27 @@
+<% if @person.errors.any? %>
+  <div class="mb mt message message-notice text-red">
+    <h3><%= pluralize(@person.errors.count, "error") %> prohibited this person details from being saved:</h3>
+
+    <ul>
+      <% @person.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="text-title mb title-lg">
+    <h2>
+      Join and publish
+    </h2>
+
+    <div>
+      <%= link_to fa_icon('bars'), people_path,
+        title: "Back to the list of people" %>
+    </div>
+  </div>
+
+  <% @accept = 'Register' %>
+  <%= render "form", person: @person %>
+</div>

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'people#index'
 
-  resources :people, only: %i[show index]
+  resources :people, only: %i[show index new create edit update]
 
   get 'up' => 'rails/health#show'
+
+  resource :session, only: %i[new create destroy]
 end

@@ -17,8 +17,10 @@ require 'rails_helper'
 RSpec.describe '/posts', type: :request do
   let(:person) do
     Person.create!(
-      name: 'Kraft',
-      email: Faker::Internet.email
+      name: Faker::Internet.unique.username(specifier: 12),
+      nickname: Faker::Internet.unique.username(specifier: 15),
+      email: Faker::Internet.email,
+      password: '12345678'
     )
   end
   # This should return the minimal set of attributes required to create a valid
@@ -35,13 +37,19 @@ RSpec.describe '/posts', type: :request do
   let(:invalid_attributes) do
     {
       title: 'issue',
-      person_id: nil,
-      body: 'qwerty'
+      person_id: person.id,
+      body: ''
     }
   end
 
   before do
-    init_current_user
+    params = {
+      session: {
+        email: person[:email],
+        password: '12345678'
+      }
+    }
+    do_request(:post, session_path, params)
   end
 
   describe 'GET /index' do
@@ -166,7 +174,6 @@ RSpec.describe '/posts', type: :request do
         post.save
 
         patch post_url(post), params: { post: invalid_attributes }
-        pp response.status
         expect(response).to have_http_status(:unprocessable_entity)
       end
 

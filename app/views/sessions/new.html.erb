@@ -1,0 +1,27 @@
+<% if flash[:alert].present? %>
+  <p class="mb mt message message-alert text-red"><%= flash[:alert] %></p>
+<% end %>
+
+<div class="container">
+  <h2 class="title">Login to the site</h2>
+
+  <p class="mt">Enter your email address and password to log in to the site</p>
+
+  <div class="mt">
+    <%= form_with scope: :session, url: session_path, data: {turbo: false} do |form| %>
+      <div>
+        <p><%= form.label :email, 'Email or nickname' %></p>
+        <p><%= form.text_field :email, required: true, minlength: 6, class: "form-text-field" %></p>
+      </div>
+
+      <div class="mt">
+        <p><%= form.label :password %></p>
+        <p><%= form.password_field :password, required: true, minlength: 8, class: "form-text-field" %></p>
+      </div>
+
+      <div class="mt-lg">
+        <%= form.submit 'Login', class: "button button-main" %>
+      </div>
+    <% end %>
+  </div>
+</div>

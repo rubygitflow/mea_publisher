@@ -1,6 +1,11 @@
 # Mea publisher
-Collection of opinions on technological experience
+Collection of opinions on technological experience.
+## Features
+* User registration and authentication;
+* Storage of user records and logging after their modification;
+* Email notification after adding posts.
 
+## Local use
 * Ruby version:
 3.2.1
 * Ruby on Rails version:
@@ -20,6 +25,14 @@ rspec spec
 ```bash
 $ bundle exec sidekiq
 ```
+* Run server
+```bash
+$ rails s
+```
+* Open in browser
+```bash
+localhost:3000
+```
 ## Work with docker container
 * Create docker image
 ```bash
@@ -35,3 +48,4 @@ docker compose up
 ```bash
 watch -n1 docker ps
 ```
+* Utilize SWARM to deploy

@@ -40,3 +40,7 @@ a, button {
   justify-content: space-between;
   padding-top: 10px;
 }
+
+.text-bold {
+  font-weight: bold;
+}

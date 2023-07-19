@@ -1,12 +1,31 @@
-<div id="<%= dom_id person %>" class="mt-sm">
-  <p>
-    <strong>Name:</strong>
-    <%= person.name %>
-  </p>
+<div id="<%= dom_id person %>">
+  <div class="mb-sm">
+    <p>
+      <strong>Name:</strong>
+      <%= person.name %>
+    </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= person.email %>
-  </p>
+    <p>
+      <strong>Nickname:</strong>
+      <%= person.nickname %>
+    </p>
 
+    <p>
+      <strong>Email:</strong>
+      <%= person.email %>
+    </p>
+  </div>
+
+  <div class="text-sm post-footer">
+    <div class="text-grey">
+      <%= l(person.created_at, format: :short) %>
+    </div>
+
+    <% if !Rails.env.test? && current_user.present? %>
+      <div>
+        <%= link_to fa_icon('pencil'), edit_person_path(person),
+          title: "Edit personal information" %>
+      </div>
+    <% end %>
+  </div>
 </div>

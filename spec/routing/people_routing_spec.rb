@@ -11,5 +11,13 @@ RSpec.describe PeopleController, type: :routing do
     it 'routes to #show' do
       expect(get: '/people/1').to route_to('people#show', id: '1')
     end
+
+    it 'routes to #create' do
+      expect(post: '/people').to route_to('people#create')
+    end
+
+    it 'routes to #new' do
+      expect(get: '/people/new').to route_to('people#new')
+    end
   end
 end

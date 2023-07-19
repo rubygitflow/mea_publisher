@@ -4,11 +4,14 @@ require 'rails_helper'
 
 RSpec.describe 'people/show', type: :view do
   let(:email) { Faker::Internet.email }
+  let(:nickname) { Faker::Internet.unique.username(specifier: 8) }
 
   before do
     assign(:person, Person.create!(
                       name: 'Kraft',
-                      email: email
+                      nickname: nickname,
+                      email: email,
+                      password: '12345678'
                     ))
   end
 
@@ -16,5 +19,6 @@ RSpec.describe 'people/show', type: :view do
     render
     expect(rendered).to match(/Kraft/)
     expect(rendered).to match(/#{email}/)
+    expect(rendered).to match(/#{nickname}/)
   end
 end
