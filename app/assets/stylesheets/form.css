@@ -10,6 +10,8 @@
   outline-width: 0;
 }
 
+input,
+.form-text-field,
 .form-text-area {
   box-sizing: border-box;
   min-width: 190px;

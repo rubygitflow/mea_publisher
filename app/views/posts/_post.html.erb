@@ -24,9 +24,9 @@
     <% if !Rails.env.test? && current_user.present? %>
       <div>
         <%= link_to fa_icon('pencil'), edit_post_path(post),
-          title: "Edit this post" %> |
+          title: "Edit post" %> |
         <%= button_to fa_icon('trash-o'), post_path(post), method: :delete,
-          title: "Destroy this post" %>
+          title: "Destroy post" %>
       </div>
     <% end %>
   </div>

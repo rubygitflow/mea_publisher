@@ -7,22 +7,26 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-first_person = Person.find_by(name: 'Gecko')
+first_person = Person.find_by(email: ENV["DEF_ADMIN_EMAIL"])
 if first_person.blank?
-  first_person = Person.create!(name: 'Gecko',
-                                nickname: 'gecko_admin',
-                                email: 'admin@boogie.com')
+  first_person = Person.create!(name: ENV["DEF_ADMIN_NAME"],
+                                nickname: ENV["DEF_ADMIN_NICKNAME"],
+                                email: ENV["DEF_ADMIN_EMAIL"],
+                                password: ENV["DEF_ADMIN_PASSWORD"])
 else
-  first_person.update(nickname: 'gecko_admin',
-                      email: 'admin@boogie.com')
+  first_person.update(nickname: ENV["DEF_ADMIN_NICKNAME"],
+                      name: ENV["DEF_ADMIN_NAME"],
+                      password: ENV["DEF_ADMIN_PASSWORD"])
 end
 
-second_person = Person.find_by(name: 'Tocko')
+second_person = Person.find_by(email: ENV["DEF_QA_EMAIL"])
 if second_person.blank?
-  second_person = Person.create!(name: 'Tocko',
-                                 nickname: 'tocko_test',
-                                 email: 'test@boogie.com')
+  second_person = Person.create!(name: ENV["DEF_QA_NAME"],
+                                 nickname: ENV["DEF_QA_NICKNAME"],
+                                 email: ENV["DEF_QA_EMAIL"],
+                                 password: ENV["DEF_QA_PASSWORD"])
 else
-  second_person.update(nickname: 'tocko_test',
-                       email: 'test@boogie.com')
+  second_person.update(nickname: ENV["DEF_QA_NICKNAME"],
+                       name: ENV["DEF_QA_NAME"],
+                       password: ENV["DEF_QA_PASSWORD"])
 end

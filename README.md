@@ -2,8 +2,8 @@
 Collection of opinions on technological experience.
 ## Features
 * User registration and authentication;
-* Storing user records;
-* Sending an email notification after adding, modifying, and deleting any post.
+* Storage of user records and logging after their modification;
+* Email notification after adding posts.
 
 ## Local use
 * Ruby version:

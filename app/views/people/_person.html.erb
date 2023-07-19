@@ -24,7 +24,7 @@
     <% if !Rails.env.test? && current_user.present? %>
       <div>
         <%= link_to fa_icon('pencil'), edit_person_path(person),
-          title: "Edit this post" %>
+          title: "Edit personal information" %>
       </div>
     <% end %>
   </div>
