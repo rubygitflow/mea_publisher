@@ -1,16 +1,18 @@
 # Mea publisher
 Collection of opinions on technological experience.
+
 ## Features
 * User registration and authentication;
-* Storage of user records and logging after their modification;
-* Email notification after adding posts.
+* Storing user records and logging manipulations with them;
+* Emailing notification after adding new post.
 
 ## Local use
 * Ruby version:
-3.2.1
+3.2.1 or higher
 * Ruby on Rails version:
-7.1.0.alpha
+7.1.0 or higher
 * Install app
+Add the `.env` file from `.env.sample`.
 ```bash
 bundle install 
 bundle exec rails db:create
@@ -33,14 +35,17 @@ $ rails s
 ```bash
 localhost:3000
 ```
+To monitor Sidekiq look at `localhost:3000\sidekiq`
 ## Work with docker container
-* Create docker image
+Fill environment variables into the .env file. Follow the instructions given in it.
+
+ * Create docker image
 ```bash
 docker build . -t mea_publisher
 ```
 * Run docker container
 
-Fill environment variables into the .env file, then run:
+then run:
 ```bash
 docker compose up
 ```
